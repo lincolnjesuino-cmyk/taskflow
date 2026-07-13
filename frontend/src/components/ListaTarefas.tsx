@@ -1,4 +1,4 @@
-import type { Tarefa } from './types'
+import type { Tarefa } from '../types/types'
 
 function ListaTarefas(props: { tarefas:Tarefa[], aoConcluir: (id:number) => void, aoExcluir: (id:number) => void }) {
     return (

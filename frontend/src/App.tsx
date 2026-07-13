@@ -1,8 +1,8 @@
 import './App.css'
-import Header from './Header'
+import Header from './components/Header'
 import {useState} from 'react'   
-import ListaTarefas from './ListaTarefas'
-import type { Tarefa } from './types'
+import ListaTarefas from './components/ListaTarefas'
+import type { Tarefa } from './types/types'
 
 
 function App() {
