@@ -1,9 +1,4 @@
-
-type Tarefa = {
-  id: number
-  texto: string
-  concluida: boolean
-}
+import type { Tarefa } from './types'
 
 function ListaTarefas(props: { tarefas:Tarefa[], aoConcluir: (id:number) => void, aoExcluir: (id:number) => void }) {
     return (

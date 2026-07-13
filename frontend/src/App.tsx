@@ -2,12 +2,8 @@ import './App.css'
 import Header from './Header'
 import {useState} from 'react'   
 import ListaTarefas from './ListaTarefas'
+import type { Tarefa } from './types'
 
-type Tarefa = {
-  id: number
-  texto: string
-  concluida: boolean
-}
 
 function App() {
   const [texto, setTexto] = useState("")
