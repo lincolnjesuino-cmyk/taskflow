@@ -1,10 +1,13 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import tarefasRoutes from './routes/tarefas'
 
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3333
+
+app.use('/tarefas', tarefasRoutes)
 
 app.get('/', (req, res) => {
   res.json({ mensagem: 'API do TaskFlow rodando!' })
