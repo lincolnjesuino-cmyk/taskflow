@@ -21,7 +21,20 @@ function App() {
 
         <ul>
           {tarefas.map((tarefa) => (
-          <li key={tarefa.id}>{tarefa.texto}</li>
+          <li key={tarefa.id}>
+            <span style={{ textDecoration: tarefa.concluida ? 'line-through' : 'none' }}>
+              {tarefa.texto}
+            </span>
+            <button onClick={() => {
+              setTarefas(tarefas.map((t) => {
+                if (t.id === tarefa.id) {
+                  return {...t, concluida: !t.concluida}
+                }
+                return t
+              }))
+
+            }}>Concluir</button>
+            </li>
       ))}
           </ul>
 
@@ -30,7 +43,6 @@ function App() {
           setTarefas([...tarefas, {id: tarefas.length + 1, texto, concluida: false}])
           setTexto("")
         }}>Adicionar</button>
-
 
     </>
   )
