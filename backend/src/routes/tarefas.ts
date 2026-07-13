@@ -8,4 +8,17 @@ router.get('/', async (req, res) => {
   res.json(tarefas)
 })
 
+router.post('/', async (req, res) => {
+  const { texto, userId } = req.body
+
+  const novaTarefa = await prisma.tarefa.create({
+    data: {
+      texto,
+      userId,
+    },
+  })
+
+  res.status(201).json(novaTarefa)
+})
+
 export default router
