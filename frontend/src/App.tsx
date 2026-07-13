@@ -1,6 +1,7 @@
 import './App.css'
 import Header from './Header'
 import {useState} from 'react'   
+import ListaTarefas from './ListaTarefas'
 
 type Tarefa = {
   id: number
@@ -13,33 +14,26 @@ function App() {
   const [tarefas, setTarefas] = useState<Tarefa[]>([
     {id: 1, texto: "Estudar TS", concluida: false},
     {id: 2, texto: "Fazer compras", concluida: false}
-
   ])
+
+  function concluirTarefa(id: number) {
+    setTarefas(tarefas.map(tarefa => tarefa.id === id ? {...tarefa, concluida: !tarefa.concluida} : tarefa))
+  }
+
+  function excluirTarefa(id: number) {
+    setTarefas(tarefas.filter(tarefa => tarefa.id !== id))
+  }
+
+
+
   return (
     <>
         <Header titulo="TaskFlow" />
-
-        <ul>
-          {tarefas.map((tarefa) => (
-          <li key={tarefa.id}>
-            <span style={{ textDecoration: tarefa.concluida ? 'line-through' : 'none' }}>
-              {tarefa.texto}
-            </span>
-            <button onClick={() => {
-              setTarefas(tarefas.map((t) => {
-                if (t.id === tarefa.id) {
-                  return {...t, concluida: !t.concluida}
-                }
-                return t
-              }))
-
-            }}>Concluir</button>
-            <button onClick={() => {
-              setTarefas(tarefas.filter((t) => t.id !== tarefa.id))
-            }}>Excluir</button>
-            </li>
-      ))}
-          </ul>
+        
+        <ListaTarefas 
+        tarefas={tarefas} 
+        aoConcluir={concluirTarefa} 
+        aoExcluir={excluirTarefa} />
 
         <input type="text" value={texto} onChange={(e) => setTexto(e.target.value)} />
         <button onClick={() => {
@@ -50,5 +44,6 @@ function App() {
     </>
   )
 }
+ 
 
 export default App
