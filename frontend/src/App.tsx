@@ -34,6 +34,9 @@ function App() {
               }))
 
             }}>Concluir</button>
+            <button onClick={() => {
+              setTarefas(tarefas.filter((t) => t.id !== tarefa.id))
+            }}>Excluir</button>
             </li>
       ))}
           </ul>
